@@ -1,27 +1,25 @@
 # Continuum_web.md
 
-**Repositori:** git/Continuum_web (local: /home/oriol/.openclaw/workspace/continuum_web)
+**Repo:** https://github.com/oriolIA/Continuum_web
 
-**Descripció:** Port del toolkit eòlic Continuum de C# a Python/FastAPI
+**Descripció:** Toolkit eòlic portat de C# a Python/FastAPI
 
-**Font:** https://www.continuumwind.com/ + git/Continuum (fork de oneenergy-software/Continuum)
-
-**Objectiu:** Portar el toolkit eòlic Continuum a una interfície web/servidor.
-
-**Estat:** ✅ COMPLET (2026-02-08)
+**Estat:** ✅ COMPLET v2.0 (2026-02-08)
 
 ---
 
-## Funcionalitats Implementades
+## Funcionalitats
 
 | Mòdul | Arxiu | Descripció |
 |-------|--------|------------|
-| **Core - Met** | `src/core/met.py` | Estructures MetData, MetStats |
-| **Core - Turbine** | `src/core/turbine.py` | Estructures Turbine, WindFarm |
-| **Met Filter** | `src/calculations/met_filter.py` | Filtratge dades, shear calculation |
-| **MCP** | `src/calculations/mcp.py` | Orthogonal Regression, Bins, Matrix |
-| **Wake** | `src/calculations/wake.py` | Jensen/Larsen models, wake maps |
-| **API** | `src/api/main.py` | FastAPI + 3 routers |
+| **Core** | `src/core/met.py` | Estructures MetData, MetStats |
+| **Core** | `src/core/turbine.py` | Estructures Turbine, WindFarm |
+| **Met Filter** | `src/calculations/met_filter.py` | QC, ombra torre, gel, shear |
+| **MCP Clàssic** | `src/calculations/mcp.py` | Orthogonal, Bins, Matrix |
+| **Neural MCP** | `src/calculations/neural_mcp.py` | Xarxa neuronal MLP |
+| **Wake** | `src/calculations/wake.py` | Jensen, Larsen, mapes |
+| **Layout** | `src/calculations/layout.py` | GA optimització, Grid, Staggered |
+| **API** | `src/api/main.py` | FastAPI + 5 routers |
 
 ---
 
@@ -29,10 +27,41 @@
 
 | Endpoint | Mètode | Descripció |
 |----------|--------|------------|
-| `/met-filter/filter` | POST | Filtrar dades meteorològiques |
-| `/met-filter/upload-csv` | POST | Pujar CSV i filtrar |
-| `/mcp/analyze` | POST | Executar MCP |
-| `/wake/calculate` | POST | Calcular pèrdues de wake |
+| `/health` | GET | Health check |
+| `/met-filter/filter` | POST | Filtrar dades |
+| `/met-filter/upload-csv` | POST | Pujar CSV |
+| `/mcp/analyze` | POST | MCP clàssic |
+| `/mcp/neural/train` | POST | MCP Neural |
+| `/wake/calculate` | POST | Calcular pèrdues |
+| `/layout/grid` | POST | Crear layout |
+| `/layout/optimize` | POST | Optimitzar GA |
+| `/layout/metrics` | POST | Mètriques layout |
+
+---
+
+## Frontend Web
+
+| Arxiu | Descripció |
+|-------|------------|
+| `frontend/index.html` | Interfície SPA |
+| `frontend/styles.css` | Disseny modern |
+| `frontend/app.js` | Lògica + API calls |
+
+**Per запустити:**
+```bash
+python3 serve_frontend.py
+# Obrir: http://localhost:8080
+```
+
+---
+
+## Millores pendents
+
+- [ ] Tests unitaris
+- [ ] Integració GIS/GDAL
+- [ ] API docs millorats
+- [ ] Sistema d'autenticació
+- [ ] Export PDF
 
 ---
 
@@ -40,15 +69,5 @@
 
 ```bash
 docker-compose up -d
-# Accés: http://localhost:8000/docs
+# API: http://localhost:8000/docs
 ```
-
----
-
-## Pendent
-
-- [ ] Git push manual a GitHub
-- [ ] Tests unitaris
-- [ ] Frontend React
-- [ ] Integració GDAL
-

@@ -1,23 +1,23 @@
 # UNET4DownscalingWRF-v2.md
 
-**Repositori:** git/UNET4DownscalingWRF-v2
+**Repo:** https://github.com/oriolIA/UNET4DownscalingWRF-v2
 
-**Descripció:** Versió millorada del codi original d'Oriol (git/UNET4downscallinngWRF-main).
+**Descripció:** Versió millorada del UNET per downscaling WRF
 
-**Objectiu:** Millorar l'arquitectura UNET per downscaling de dades WRF.
+**Objectiu:** Millorar l'arquitectura UNET original
 
-**Estat:** ✅ IMPLEMENTAT (2026-02-08) - Nou model ResUNet
+**Estat:** ✅ IMPLEMENTAT (2026-02-08)
 
 ---
 
 ## Nou Model: ResUNet
 
 **Característiques:**
-- Residual connections (skip connections)
-- Attention gates
-- Encoder/decoder millorat
+- ✅ Residual connections (skip connections)
+- ✅ Attention gates
+- ✅ Encoder/decoder millorat
 
-**Estructura:**
+**Arquitectura:**
 ```
 Encoder: ResidualBlock ×4 (64→512 canals)
 Bottleneck: ResidualBlock ×1 (512→1024 canals)
@@ -27,19 +27,45 @@ Output: Conv1×1 (64→2 canals per U,V)
 
 ---
 
-## Fitxers nous (2026-02-08)
+## Mètriques disponibles
 
-| Fitxer | Descripció |
-|--------|------------|
-| `src/models/resunet.py` | Model ResUNet amb atenció |
+| Mètrica | Implementada |
+|---------|-------------|
+| MSE | ✅ |
+| MAE | ✅ |
+| PSNR | ✅ |
+| SSIM | ✅ |
+
+---
+
+## Scripts
+
+| Arxiu | Descripció |
+|-------|------------|
+| `src/models/resunet.py` | Model ResUNet |
 | `src/training/trainer.py` | Loop d'entrenament |
+| `src/utils/metrics.py` | Mètriques |
+| `src/utils/scheduler.py` | LR Schedulers |
 | `train.sh` | Script de training |
 
 ---
 
-## Pendent
+## Millores pendents
 
-- [ ] Git push manual
-- [ ] Entrenar ResUNet
-- [ ] Comparar amb v1
+- [ ] Entrenar ResUNet (necessita GPU)
+- [ ] Comparar amb v1 (SRDownscalling UNetSR)
 - [ ] Hyperparameter tuning
+- [ ] Mixed Precision (FP16)
+- [ ] Early Stopping
+
+---
+
+## Ús
+
+```bash
+# Entrenar
+./train.sh
+
+# O directament
+python3 -m src.training.trainer --lr_dir /home/oriol/data/WRF/1469893/d02 --hr_dir /home/oriol/data/WRF/1469893/d05 --model resunet
+```
