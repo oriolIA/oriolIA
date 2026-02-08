@@ -8,24 +8,32 @@
 
 **Objectiu:** Crear un model de Super Resolution des de zero (no còpia del SRDownscalling original d'Oriol).
 
-**Estat:** Creat
+**Estat:** ⚠️ CONFIGURAT (2026-02-08) - Canviat d01 → d02
 
 ---
 
-## Notes
-- Desenvolupament des de zero
-- Enfocat en camps de vent per WRF
-- Utilitza arquitectura ESRGAN millorada amb mecanismes d'atenció
+## Canvi (2026-02-08)
 
-## Seguiment (2026-02-08)
+| Abans | Ara |
+|-------|-----|
+| d01 (LR, ~9km) | d02 (LR, ~3km) |
+| 50×51 | 100×100 |
+| Directori no existeix | 366 fitxers existents |
 
-### 2026-02-08 10:19 - Creació del fitxer
-- Creat com a template inicial al repo oriolIA
-- **Problema detectat:** No hi ha registres dels prompts originals al sistema de memòria d'OpenClaw
-- **Acció:** S'ha creat documentació nova amb l'entendiment actual
+---
 
-### Tasques pendents
-- [ ] Revisar codi existent a git/SRDownscalling
-- [ ] Documentar arquitectura i decisions de disseny
-- [ ] Afegir resultats d'entrenament si existeixen
+## Dataset
 
+| Domini | Resolució | Dimensions | Path |
+|--------|-----------|------------|------|
+| d02 (pare) | ~3km | 100×100×48×9 | `/home/oriol/data/WRF/1469893/d02/` |
+| d05 (fill) | ~100m | 125×119×48×9 | `/home/oriol/data/WRF/1469893/d05/` |
+
+---
+
+## Pendent
+
+- [ ] Git push manual
+- [ ] Entrenar model ESRGAN/UNetSR
+- [ ] Implementar atenció (CBAM/Self-Attention)
+- [ ] Afegir mètrica SSIM

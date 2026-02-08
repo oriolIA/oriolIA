@@ -1,39 +1,54 @@
 # Continuum_web.md
 
-**Repositori:** git/Continuum_web (local: /home/oriol/git/Continuum_web)
+**Repositori:** git/Continuum_web (local: /home/oriol/.openclaw/workspace/continuum_web)
 
-**Descripció:** Replica del codi de Continuum amb interfície/servidor web.
+**Descripció:** Port del toolkit eòlic Continuum de C# a Python/FastAPI
 
 **Font:** https://www.continuumwind.com/ + git/Continuum (fork de oneenergy-software/Continuum)
 
 **Objectiu:** Portar el toolkit eòlic Continuum a una interfície web/servidor.
 
-**Estat:** En desenvolupament (codi inicial existent)
+**Estat:** ✅ COMPLET (2026-02-08)
 
 ---
 
-## Tecnologies
-- C# (.NET)
-- Interfície web/servidor
+## Funcionalitats Implementades
 
-## Notes
-- Toolkit de wind resource assessment
-- Funcionalitats: met data filtering, MCP, wake loss modeling
-- Cal migrar a arquitectura web
+| Mòdul | Arxiu | Descripció |
+|-------|--------|------------|
+| **Core - Met** | `src/core/met.py` | Estructures MetData, MetStats |
+| **Core - Turbine** | `src/core/turbine.py` | Estructures Turbine, WindFarm |
+| **Met Filter** | `src/calculations/met_filter.py` | Filtratge dades, shear calculation |
+| **MCP** | `src/calculations/mcp.py` | Orthogonal Regression, Bins, Matrix |
+| **Wake** | `src/calculations/wake.py` | Jensen/Larsen models, wake maps |
+| **API** | `src/api/main.py` | FastAPI + 3 routers |
 
-## Seguiment (2026-02-08)
+---
 
-### 2026-02-08 10:19 - Creació del fitxer
-- Creat com a template inicial al repo oriolIA
-- **Descobriment:** El repo existeix localment a `/home/oriol/git/Continuum_web`
-- **Estat a GitHub:** NO visible a github.com/oriolIA (probablement no pujat)
+## API Endpoints
 
-### 2026-02-08 10:13 - Primera menció
-- Oriol va indicar que havia begut codi inicial del repo Continuum
-- Cal pujar el codi local a GitHub
+| Endpoint | Mètode | Descripció |
+|----------|--------|------------|
+| `/met-filter/filter` | POST | Filtrar dades meteorològiques |
+| `/met-filter/upload-csv` | POST | Pujar CSV i filtrar |
+| `/mcp/analyze` | POST | Executar MCP |
+| `/wake/calculate` | POST | Calcular pèrdues de wake |
 
-### Tasques pendents
-- [ ] Pujar codi de `/home/oriol/git/Continuum_web` a GitHub
-- [ ] Definir arquitectura web (Flask/FastAPI, React, etc.)
-- [ ] Identificar quin codi del toolkit cal migrar
+---
+
+## Docker
+
+```bash
+docker-compose up -d
+# Accés: http://localhost:8000/docs
+```
+
+---
+
+## Pendent
+
+- [ ] Git push manual a GitHub
+- [ ] Tests unitaris
+- [ ] Frontend React
+- [ ] Integració GDAL
 

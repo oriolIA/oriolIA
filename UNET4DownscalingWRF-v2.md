@@ -6,23 +6,40 @@
 
 **Objectiu:** Millorar l'arquitectura UNET per downscaling de dades WRF.
 
-**Estat:** Creat
+**Estat:** ✅ IMPLEMENTAT (2026-02-08) - Nou model ResUNet
 
 ---
 
-## Notes
-- Basat en el treball original d'Oriol
-- Millores en l'arquitectura o entrenament
-- Enfocat en downscaling de dades meteorològiques
+## Nou Model: ResUNet
 
-## Seguiment (2026-02-08)
+**Característiques:**
+- Residual connections (skip connections)
+- Attention gates
+- Encoder/decoder millorat
 
-### 2026-02-08 10:19 - Creació del fitxer
-- Creat com a template inicial al repo oriolIA
-- **Nota:** No hi ha memòria dels prompts originals
+**Estructura:**
+```
+Encoder: ResidualBlock ×4 (64→512 canals)
+Bottleneck: ResidualBlock ×1 (512→1024 canals)
+Decoder: Upsample + AttentionGate + ResidualBlock ×4
+Output: Conv1×1 (64→2 canals per U,V)
+```
 
-### Tasques pendents
-- [ ] Revisar codi existent a git/UNET4DownscalingWRF-v2
-- [ ] Documentar quines millores s'han fet respecte v1
-- [ ] Afegir mètriques de rendiment si existeixen
+---
 
+## Fitxers nous (2026-02-08)
+
+| Fitxer | Descripció |
+|--------|------------|
+| `src/models/resunet.py` | Model ResUNet amb atenció |
+| `src/training/trainer.py` | Loop d'entrenament |
+| `train.sh` | Script de training |
+
+---
+
+## Pendent
+
+- [ ] Git push manual
+- [ ] Entrenar ResUNet
+- [ ] Comparar amb v1
+- [ ] Hyperparameter tuning
