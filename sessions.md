@@ -13,10 +13,10 @@
 - **Notes:** Implementació nova de Super Resolution per downscaling.
 
 ### Continuum → Continuum_web
-- **Estat:** En progrés
-- **Font:** https://www.continuumwind.com/
+- **Estat:** NO TROBAT - cal crear
+- **Font:** https://www.continuumwind.com/ + git/Continuum
 - **Repositori:** git/Continuum_web
-- **Notes:** Replica del codi de Continuum amb interfície/servidor web. Ja s'ha begut el codi inicial.
+- **Notes:** Replica del codi de Continuum amb interfície/servidor web. **Cal crear el repositori.**
 
 ---
 
