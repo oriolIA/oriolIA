@@ -110,36 +110,32 @@
 
 ---
 
-## ACTIVITAT 2026-02-09
+## ACTIVITAT 2026-02-09 (TARDE)
 
-### Continuum Web - Debug & Millores
-**Estat:** API funcionant ✅
+### Continuum Web - Debug Intensiu
+**Estat:** ✅ **TOTS ELS ENDPOINTS FUNCIONEN**
 
-| Acció | Data | Estat |
-|-------|------|-------|
-| Arreglar typing imports (List, Tuple) | 09/02 | ✅ |
-| Eliminar import invàlid projects_base | 09/02 | ✅ |
-| Muntar fitxers estàtics frontend | 09/02 | ✅ |
-| Instal·lar dependències (uvicorn, pandas) | 09/02 | ✅ |
-| Arreglar met_filter API | 09/02 | ✅ |
-| API testejada amb curl | 09/02 | ✅ |
+| Endpoint | Mètode | Estat |
+|----------|--------|-------|
+| `/health` | GET | ✅ OK |
+| `/projects/list` | GET | ✅ OK |
+| `/projects/create` | POST | ✅ OK |
+| `/projects/{name}` | GET | ✅ OK |
+| `/files/upload` | POST | ✅ OK |
+| `/files/list` | GET | ✅ OK |
+| `/met-filter/filter` | POST | ✅ OK |
+| `/wake/calculate` | POST | ✅ OK |
+| `/layout/grid` | POST | ✅ OK |
+| `/layout/optimize` | POST | ✅ OK |
 
-**API endpoints testejats:**
-- ✅ `POST /projects/create` - Crear projectes
-- ✅ `GET /projects/list` - Llistar projectes
-- ✅ `POST /files/upload` - Pujar fitxers
-- ✅ `POST /met-filter/filter` - Filtrar dades met
+**Arreglos fets (09/02 Tarde):**
+- ✅ Arreglat `TurbineWake.wake_radius_at_downwind()` (error @property)
+- ✅ Met-filter suporta dades column-based i sense temperature
+- ✅ Pujat a GitHub: commit `602c7cc`
 
-**Projecte de prova:** "Test Project" amb fitxers de turbines
-
----
-
-### SRDownscalling - Actualització
-| Acció | Data | Estat |
-|-------|------|-------|
-| Canviar target: d01→d05 → **d02→d05** | 09/02 | ✅ |
-| Actualitzar README.md | 09/02 | ✅ |
-| Actualitzar WORKING_STEPS.md | 09/02 | ✅ |
+**Projecte de prova:** "Demo Project" amb:
+- Fitxer met: `test_met.csv`
+- 3 registres de dades
 
 ---
 
