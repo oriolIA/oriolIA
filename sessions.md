@@ -104,10 +104,56 @@
 2026-02-08 | Continuum_web COMPLET v2.0
 2026-02-08 | SRDownscalling configurat d02→d05
 2026-02-08 | UNET4Downscaling ResUNet implementat
+**2026-02-09** | **Continuum Web API DEBUGUEJAT** ✅
+2026-02-09 | SRDownscalling actualitzat d02→d05
+2026-02-09 | Wave Watcher actiu + dijous reminder
 
 ---
 
-## ALTRES PROJECTES
+## ACTIVITAT 2026-02-09
+
+### Continuum Web - Debug & Millores
+**Estat:** API funcionant ✅
+
+| Acció | Data | Estat |
+|-------|------|-------|
+| Arreglar typing imports (List, Tuple) | 09/02 | ✅ |
+| Eliminar import invàlid projects_base | 09/02 | ✅ |
+| Muntar fitxers estàtics frontend | 09/02 | ✅ |
+| Instal·lar dependències (uvicorn, pandas) | 09/02 | ✅ |
+| Arreglar met_filter API | 09/02 | ✅ |
+| API testejada amb curl | 09/02 | ✅ |
+
+**API endpoints testejats:**
+- ✅ `POST /projects/create` - Crear projectes
+- ✅ `GET /projects/list` - Llistar projectes
+- ✅ `POST /files/upload` - Pujar fitxers
+- ✅ `POST /met-filter/filter` - Filtrar dades met
+
+**Projecte de prova:** "Test Project" amb fitxers de turbines
+
+---
+
+### SRDownscalling - Actualització
+| Acció | Data | Estat |
+|-------|------|-------|
+| Canviar target: d01→d05 → **d02→d05** | 09/02 | ✅ |
+| Actualitzar README.md | 09/02 | ✅ |
+| Actualitzar WORKING_STEPS.md | 09/02 | ✅ |
+
+---
+
+### 🌊 Wave Watcher - Actiu
+**Estat:** Monitoritzant ✅
+
+| Component | Estat |
+|-----------|-------|
+| Cron job | ✅ Actiu (cada 6h) |
+| Open-Meteo API | ✅ Funcionant |
+| Recordatori dijous 18:00 | ✅ Configurat |
+| Alertes Telegram | ✅ Enviades |
+
+**Darrer alert:** Divendres 13 Feb - Hs 1.5m, Tp 7.3s 🌊
 
 ### ☁️ CloudSelf
 **Estat:** Pla de negoci creat
